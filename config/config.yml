@@ -1,0 +1,22 @@
+server:
+  host: 0.0.0.0
+  port: '8585'
+database:
+  host: 185.250.44.162
+  port: '5432'
+  user: shahzod
+  password: shahzod
+  name: ministry_db
+  ssl_mode: disable
+token_ttl:
+  access_token_ttl: 15m
+  refresh_token_ttl: 120h # 5 days
+logger:
+  format: json
+  write_to_file: true
+  write_to_console: false
+  log_file: logs/app.log
+params:
+  max_image_size: 1048576 # 1MB
+  avatars_directory: avatars
+  images_directory: images

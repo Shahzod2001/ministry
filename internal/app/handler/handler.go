@@ -1,0 +1,17 @@
+package handler
+
+import "ministry/internal/app/service"
+
+type Handler struct {
+	Service *service.Service
+}
+
+func New(svc *service.Service) *Handler {
+	return &Handler{Service: svc}
+}
+
+type response struct {
+	Code    int    `json:"code"`
+	Message string `json:"message"`
+	Payload any    `json:"payload"`
+}

@@ -1,0 +1,128 @@
+definitions:
+  handler.addTeacherInput:
+    properties:
+      academic_degree_id:
+        type: integer
+      academic_position_id:
+        type: integer
+      birth_date:go run cmd/ministry/main.go
+        type: string
+      birth_place:
+        type: string
+      direction_spec_id:
+        type: integer
+      first_name:
+        type: string
+      from_year:
+        type: integer
+      gender:
+        type: integer
+      job_title:
+        type: string
+      last_name:
+        type: string
+      middle_name:
+        type: string
+      other_job:
+        type: string
+      spec_id:
+        type: integer
+      to_year:
+        type: integer
+      type_id:
+        type: integer
+    required:
+    - academic_degree_id
+    - academic_position_id
+    - birth_date
+    - birth_place
+    - direction_spec_id
+    - first_name
+    - from_year
+    - gender
+    - job_title
+    - last_name
+    - spec_id
+    - to_year
+    - type_id
+    type: object
+  handler.response:
+    properties:
+      code:
+        type: integer
+      data: {}
+      message:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /admin/teachers:
+    get:
+      consumes:
+      - application/json
+      description: Get all teachers from all universities
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.response'
+      summary: Get all teachers
+      tags:
+      - teachers
+  /teacher/all:
+    get:
+      consumes:
+      - application/json
+      description: Get all teachers associated with the university
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.response'
+      summary: Get teachers of the university
+      tags:
+      - teachers
+  /teacher/create:
+    post:
+      consumes:
+      - application/json
+      description: Add a new teacher to the university
+      parameters:
+      - description: Add Teacher
+        in: body
+        name: teacher
+        required: true
+        schema:
+          $ref: '#/definitions/handler.addTeacherInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.response'
+      summary: Add a new teacher
+      tags:
+      - teachers
+swagger: "2.0"

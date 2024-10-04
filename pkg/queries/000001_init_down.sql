@@ -1,0 +1,9 @@
+drop table if exists users;
+drop table if exists clients;
+drop table if exists subdivisions;
+drop table if exists organizations;
+drop table if exists cities;
+drop table if exists countries;
+drop table if exists genders;
+drop table if exists permissions;
+drop table if exists roles;

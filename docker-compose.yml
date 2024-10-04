@@ -1,0 +1,33 @@
+version: '3'
+services:
+  app:
+    build: .
+    container_name: elibrary_api
+    tty: true
+    restart: always
+    ports:
+      - "8585:8585"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=admin
+      - DB_PASSWORD=admin
+      - DB_NAME=elibrary_db
+      - DB_SSL_MODE=disable
+
+  db:
+    image: "postgres:16"
+    container_name: ministry-db
+    expose:
+      - 5432
+    environment:
+      - POSTGRES_DB=elibrary_db
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
